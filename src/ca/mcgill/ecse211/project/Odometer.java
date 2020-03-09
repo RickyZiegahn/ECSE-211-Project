@@ -16,6 +16,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author Karim El-Baba
  * @author Michael Smith
  * @author Younes Boubekeur
+ * @author Ricky Ziegahn
  */
 
 public class Odometer implements Runnable {

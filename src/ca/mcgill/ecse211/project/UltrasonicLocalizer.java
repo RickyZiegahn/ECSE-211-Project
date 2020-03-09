@@ -4,7 +4,13 @@ import static ca.mcgill.ecse211.project.Resources.*;
 import static ca.mcgill.ecse211.project.DriveUtil.turnBy;
 import static ca.mcgill.ecse211.project.DriveUtil.moveStraightFor;
 
-
+/**
+ * 
+ * Performs a rough angle and position localization
+ * 
+ * @author Ricky
+ *
+ */
 public class UltrasonicLocalizer {
   
   /**
@@ -49,12 +55,7 @@ public class UltrasonicLocalizer {
   private static boolean sawInfinity = false;
   
   /**
-   * Flag shows if localization is complete
-   */
-  private static boolean isComplete = false;
-  
-  /**
-   * Perform angle localization, wait for a button press, then localize position
+   * Perform angle localization and moves to the nearest point
    */
   public void doLocalization() {
     distance = readUsDistance();

@@ -16,8 +16,6 @@ import lejos.hardware.sensor.EV3UltrasonicSensor;
  * 
  * <p>{@code import static ca.mcgill.ecse211.lab5.Resources.*;}
  */
-
-
 public class Resources {
   
   /**
@@ -141,30 +139,6 @@ public class Resources {
    * Instance of the light localizer
    */
   public static LightLocalizer lightLocalizer = new LightLocalizer();
-  
-  /**
-   * Green ring object
-   */
-  public static ColorRing greenRing = new ColorRing('g', (float)  0.043137256, (float) 0.6312263327, (float) 0.5996279973,
-      (float) 0.1415939513, (float) 0.09192855978, (float) 0.1611744524);
-  
-  /**
-   * Blue ring object
-   */
-  public static ColorRing blueRing = new ColorRing('b', (float) 0.1493461711, (float) 0.3664785837, (float) 0.914090067,
-      (float) 0.06892412181, (float) 0.05641191651, (float) 0.02766793912);
-  
-  /**
-   * Orange ring object
-   */
-  public static ColorRing orangeRing = new ColorRing('o', (float) 0.8780126361, (float) 0.1911880488, (float) 0.4211930913,
-      (float) 0.04266986854, (float) 0.05666731416, (float) 0.1085695314);
-  
-  /**
-   * Yellow ring object
-   */
-  public static ColorRing yellowRing = new ColorRing('y', (float) 2.962132417, (float) 1.4983591, (float) 0.8444591927,
-      (float) 2.916815357, (float) 1.536010129, (float) 0.6115559884);
   
   // Hardware initialization
   

@@ -40,8 +40,6 @@ public class Navigation {
     turnTo(theta);
     double deltaDistance = Math.sqrt(dx*dx + dy*dy);
     moveStraightFor(deltaDistance);
-    lastX = x;
-    lastY = y;
   }
   
   /**
