@@ -29,17 +29,40 @@ public class Navigation {
    * @param y y coordinate of tile point
    */
   public void travelTo(double x, double y) {
-    currentXyt = odo.getXyt();
-    double dy = y - currentXyt[1]/TILE_SIZE;
-    double dx = x - currentXyt[0]/TILE_SIZE;
+    currentXyt = odo.getXyt();  
+    
+//    turnTo(theta);
+//    double deltaDistance = Math.sqrt(dx*dx + dy*dy);
+//    moveStraightFor(deltaDistance);
+    double currentX = currentXyt[0]/TILE_SIZE;
+    double currentY = currentXyt[1]/TILE_SIZE;
+    double dy = y - currentY;
+    double dx = x - currentX;
     double theta = Math.atan2(dx, dy) * 180/Math.PI;
-        
     if (theta < 0)
       theta += 360;
+    double distance = magnitude(dx,dy); //calculate how far we have to go
+    while (distance < TILE_SIZE/2) {
+      if (distance > MAX_DISTANCE) { // check if we're going too far to recover our location
+        dx = MAX_DISTANCE * Math.sin(theta * Math.PI / 180);
+        dy = MAX_DISTANCE * Math.cos(theta * Math.PI / 180);
         
-    turnTo(theta);
-    double deltaDistance = Math.sqrt(dx*dx + dy*dy);
-    moveStraightFor(deltaDistance);
+        // Compute all the floored and ceiling values of dx, dy
+        double dxFloored = Math.floor(dx);
+        double dxCeil = Math.ceil(dx);
+        double dyFloored = Math.floor(dy);
+        double dyCeil = Math.ceil(dy);
+        
+        // Compute the distance we have to move to get to one of the corners
+        double case1 = magnitude(dxFloored, dyFloored);
+        double case2 = magnitude(dxCeil, dyFloored);
+        double case3 = magnitude(dxFloored, dyCeil);
+        double case4 = magnitude(dxCeil, dyCeil);
+        
+        // Compute the distance to move the furthest without
+      }
+      
+    }
   }
   
   /**
@@ -59,6 +82,17 @@ public class Navigation {
       dTheta += 360;
     
     turnBy(dTheta, false);
+  }
+  
+  /**
+   * Computes the magnitude of an (x,y) vector
+   * 
+   * @param x x coordinate of vector
+   * @param y y coordinate of vector
+   * @return the magnitude of the vector
+   */
+  public double magnitude(double x, double y) {
+    return Math.sqrt(x*x + y*y);
   }
 }
 

@@ -2,7 +2,6 @@ package ca.mcgill.ecse211.project;
 
 
 import lejos.hardware.ev3.LocalEV3;
-
 import lejos.hardware.lcd.TextLCD;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.port.MotorPort;
@@ -99,6 +98,11 @@ public class Resources {
    * Determined experimentally
    */
   public static final double OVERSHOOT = 18;
+  
+  /**
+   * The maximum distance the robot can go before it needs to re-localize (tile units)
+   */
+  public static final double MAX_DISTANCE = 3.5;
   
   /**
    *The left motor.

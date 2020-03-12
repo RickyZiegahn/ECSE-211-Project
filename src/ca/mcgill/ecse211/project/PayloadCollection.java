@@ -23,4 +23,19 @@ public class PayloadCollection {
     
   }
   
+  /**
+   * Applies a difference filter to an input array
+   * 
+   * @param data array of data to apply difference filter to
+   * @return filtered data array
+   */
+  private static float[] differenceFilter(float[] data) {
+    float[] output = new float[data.length];
+    
+    for (int i = 1; i != data.length; i++) {
+      output[i] = data[i] - data[i-1];
+    }
+    
+    return output;
+  }
 }
