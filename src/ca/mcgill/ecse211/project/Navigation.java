@@ -30,10 +30,7 @@ public class Navigation {
    */
   public void travelTo(double x, double y) {
     currentXyt = odo.getXyt();  
-    
-//    turnTo(theta);
-//    double deltaDistance = Math.sqrt(dx*dx + dy*dy);
-//    moveStraightFor(deltaDistance);
+ 
     double currentX = currentXyt[0]/TILE_SIZE;
     double currentY = currentXyt[1]/TILE_SIZE;
     double dy = y - currentY;
@@ -42,12 +39,15 @@ public class Navigation {
     if (theta < 0)
       theta += 360;
     double distance = magnitude(dx,dy); //calculate how far we have to go
+    
+    // perform iterative process to get closer to the waypoint without losing track
     while (distance < TILE_SIZE/2) {
       if (distance > MAX_DISTANCE) { // check if we're going too far to recover our location
+        // create vector components in the direction of the point
         dx = MAX_DISTANCE * Math.sin(theta * Math.PI / 180);
         dy = MAX_DISTANCE * Math.cos(theta * Math.PI / 180);
         
-        // Compute all the floored and ceiling values of dx, dy
+        // Compute all the floored and ceiling values of dx, dy (so we end on a point so we can localize)
         double dxFloored = Math.floor(dx);
         double dxCeil = Math.ceil(dx);
         double dyFloored = Math.floor(dy);
@@ -59,9 +59,51 @@ public class Navigation {
         double case3 = magnitude(dxFloored, dyCeil);
         double case4 = magnitude(dxCeil, dyCeil);
         
-        // Compute the distance to move the furthest without
+        // Search for the adjacent point that leaves the robot closest to the
+        // destination while still being under the maximum distance
+        
+        double minRemainingX = x - currentX;    // minimum remaining distance after moving
+        double minRemainingY = y - currentY;    // (using distance remaining before movement as placeholder)
+        double minRemainingDistance = magnitude(minRemainingX, minRemainingY);  // magnitude of remaining distance after movement
+        
+        if (case1 <= MAX_DISTANCE) {
+          if (magnitude(x - (currentX + dxFloored), y - (currentY + dyFloored)) < minRemainingDistance) {
+            minRemainingX = dxFloored;
+            minRemainingY = dyFloored;
+            minRemainingDistance = magnitude(x - (currentX + minRemainingX), y - (currentY + minRemainingY));
+          }
+        }
+        if (case2 <= MAX_DISTANCE) {
+          if (magnitude(x - (currentX + dxCeil), y - (currentY + dyFloored)) < minRemainingDistance) {
+            minRemainingX = dxCeil;
+            minRemainingY = dyFloored;
+            minRemainingDistance = magnitude(x - (currentX + minRemainingX), y - (currentY + minRemainingY));
+          }
+        }
+        if (case3 <= MAX_DISTANCE) {
+          if (magnitude(x - (currentX + dxFloored), y - (currentY + dyCeil)) < minRemainingDistance) {
+            minRemainingX = dxFloored;
+            minRemainingY = dyCeil;
+            minRemainingDistance = magnitude(x - (currentX + minRemainingX), y - (currentY + minRemainingY));
+          }
+        }
+        if (case4 <= MAX_DISTANCE) {
+          if (magnitude(x - (currentX + dxCeil), y - (currentY + dyCeil)) < minRemainingDistance) {
+            minRemainingX = dxCeil;
+            minRemainingY = dyCeil;
+            minRemainingDistance = magnitude(x - (currentX + minRemainingX), y - (currentY + minRemainingY));
+          }
+        }
+        dx = minRemainingX;
+        dy = minRemainingY;
+        distance = magnitude(dx, dy);
+        
+        // compute the new theta to get to our intermediate point
+        theta = Math.atan2(dx, dy) * 180/Math.PI;
       }
       
+      turnTo(theta);
+      moveStraightFor(distance);
     }
   }
   
