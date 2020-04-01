@@ -147,7 +147,7 @@ public class LightLocalizer {
    * @param threshold cutoff value for converting to nonzero, i.e., if |data[i]| < threshold, then output[i] = 0 
    * @return
    */
-  private static byte[] discretizeArray(float[] data, float threshold) {
+  public static byte[] discretizeArray(float[] data, float threshold) {
     byte[] output = new byte[data.length];
     
     for (int i = 0; i != data.length; i++) {
