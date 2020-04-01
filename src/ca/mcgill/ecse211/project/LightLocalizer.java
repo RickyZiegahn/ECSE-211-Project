@@ -40,7 +40,7 @@ public class LightLocalizer {
   
   /**
    * Performs localization using calculations from the localization
-   * tutorial
+   * tutorial 
    */
   public void doLocalization() {
     float[] angles = getAngles();
@@ -63,9 +63,12 @@ public class LightLocalizer {
   }
   
   /**
-   * Detects angular location of lines
+   * Detects angular location of lines.
    * 
-   * @return array containing angles in the order -x axis, +y, +x, -y
+   * Takes samples at specified intervals while turning, calls lineDetection function,
+   * and verifies that only 4 lines were detected.
+   * 
+   * @return array containing angles of lines
    */
   private static float[] getAngles() {
     long updateStart;
@@ -101,7 +104,8 @@ public class LightLocalizer {
     
     while (angles[0] == 0 || angles[1] == 0 || angles[2] == 0 || angles[3] == 0 || angles[4] != 0) {
       angles = getAngles();
-    } // verify that we detected exactly 4 lines, do it again if we did not
+    }
+    // verify that we detected exactly 4 lines, do it again if we did not
     
     return angles;
     
@@ -141,7 +145,7 @@ public class LightLocalizer {
    * 
    * @param data array of data to discretize
    * @param threshold cutoff value for converting to nonzero, i.e., if |data[i]| < threshold, then output[i] = 0 
-   * @return ternary array
+   * @return
    */
   private static byte[] discretizeArray(float[] data, float threshold) {
     byte[] output = new byte[data.length];
@@ -164,10 +168,9 @@ public class LightLocalizer {
   /**
    * Detects locations of lines using light value readings. Applies difference filter
    * and analog-to-ternary conversion.
-   * Detects a line by detecting "low-high" after processing.
-   * 
+   * Detects a line by detecting a low-high after processing.
    * @param data unprocessed data array of light values
-   * @return array containing locations of detected lines
+   * @return array containing locations of detected liens
    */
   private static float[] lineDetection(float[] data) {
     byte[] processedData = discretizeArray(differenceFilter(data), (float) 0.0325);
