@@ -114,6 +114,16 @@ public class Resources {
    */
   public static final EV3LargeRegulatedMotor rightMotor = new EV3LargeRegulatedMotor(MotorPort.D);
   
+  /** 
+   * The right arm motor
+   */
+  public static final EV3LargeRegulatedMotor leftArmMotor = new EV3LargeRegulatedMotor(MotorPort.B);
+  
+  /** 
+   * The right arm motor
+   */
+  public static final EV3LargeRegulatedMotor rightArmMotor = new EV3LargeRegulatedMotor(MotorPort.C);
+  
   /**
    * The ultrasonic sensor.
    */
