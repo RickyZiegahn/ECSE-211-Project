@@ -64,6 +64,7 @@ public class ColorDetection implements Runnable {
   
   /**
    * returns string from getColorID()
+   * @param index the number returned by getColorID()
    * @return String color detected
    */
   private static String getColorString(int index) {

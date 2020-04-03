@@ -158,11 +158,11 @@ public class Navigation {
    * Provides a pair of [dx, dy] that will go around an object. Add or subtracts headingChange
    * from the current path if there is an object in the way of the desired path.
    * 
-   * @param x
-   * @param y
-   * @param theta
-   * @param currentX
-   * @param currentY
+   * @param x x coordinate of final destination
+   * @param y y coordinate of final destiation
+   * @param theta heading angle
+   * @param currentX current x position
+   * @param currentY current y position
    * @return [dx,dy] array for recommended intermediate displacement
    */
   private double[] avoidObject(double x, double y, double theta, double currentX, double currentY) {
