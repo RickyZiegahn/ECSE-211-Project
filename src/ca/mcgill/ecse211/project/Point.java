@@ -1,4 +1,4 @@
-package ca.mcgill.ecse211.playingfield;
+package ca.mcgill.ecse211.project;
 
 /**
  * Represents a coordinate point on the competition map grid.

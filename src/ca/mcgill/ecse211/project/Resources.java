@@ -3,8 +3,6 @@ package ca.mcgill.ecse211.project;
 
 import java.math.BigDecimal;
 import java.util.Map;
-import ca.mcgill.ecse211.playingfield.Point;
-import ca.mcgill.ecse211.playingfield.Region;
 import ca.mcgill.ecse211.wificlient.WifiConnection;
 import lejos.hardware.ev3.LocalEV3;
 import lejos.hardware.lcd.TextLCD;

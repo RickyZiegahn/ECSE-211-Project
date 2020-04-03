@@ -1,4 +1,4 @@
-package ca.mcgill.ecse211.playingfield;
+package ca.mcgill.ecse211.project;
 
 /**
  * Represents a region on the competition map grid, delimited by its lower-left and upper-right
