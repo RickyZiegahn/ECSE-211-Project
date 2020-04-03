@@ -79,7 +79,7 @@ public class ColorDetection implements Runnable {
   }
   
   /**
-   * Getter for ArrayList<String> colorsDetected
+   * Getter for ArrayList colorsDetected
    * @return colorsDetected
    */
   public static ArrayList<String> getColorsDetected() {

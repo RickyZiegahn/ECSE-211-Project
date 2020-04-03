@@ -53,7 +53,7 @@ public class PayloadCollection {
    * Sweeps the area while measuring distances with the ultrasonic. Turns clockwise
    * from current heading angle.
    * 
-   * @param sweepAngle
+   * @param sweepAngle angle to sweep when turning
    * @return array containing distances read
    */
   private float[] sweepDistances(double sweepAngle) {

@@ -151,8 +151,8 @@ public class LightLocalizer {
    * Discretizes array to Ternary (-1, 0, 1)
    * 
    * @param data array of data to discretize
-   * @param threshold cutoff value for converting to nonzero, i.e., if |data[i]| < threshold, then output[i] = 0 
-   * @return
+   * @param threshold cutoff value for converting to nonzero
+   * @return discretized array
    */
   public static byte[] discretizeArray(float[] data, float threshold) {
     byte[] output = new byte[data.length];
