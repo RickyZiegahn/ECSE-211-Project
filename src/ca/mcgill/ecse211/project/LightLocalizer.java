@@ -5,6 +5,13 @@ import lejos.robotics.SampleProvider;
 import static ca.mcgill.ecse211.project.Main.sleepFor;
 import static ca.mcgill.ecse211.project.DriveUtil.*;
 
+/**
+ * This class is used to define functions to perform localization
+ * using a light sensor
+ * 
+ * @author Ricky
+ *
+ */
 public class LightLocalizer {
   
   /**
