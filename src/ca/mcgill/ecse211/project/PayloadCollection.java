@@ -4,7 +4,9 @@ package ca.mcgill.ecse211.project;
  * 
  * The payload collection class localizes potential payloads
  * and checks if the detected object is the payload, and
- * collects the payload.
+ * collects the payload. Instructions for possible implementations of
+ * this class can be found in section 8.2 and 8.3 of the software
+ * document.
  * 
  * @author Ricky
  *

@@ -55,7 +55,9 @@ public class UltrasonicLocalizer {
   private static boolean sawInfinity = false;
   
   /**
-   * Perform angle localization and moves to the nearest point
+   * Perform angle localization and moves to the nearest point. Instructions
+   * for completion of this class can be found in section 8.7 of the software
+   * document.
    */
   public void doLocalization() {
     distance = readUsDistance();

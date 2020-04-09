@@ -24,7 +24,8 @@ public class ColorDetection implements Runnable {
 
   /**
    * Polls the color sensor and interrupts navigation when a color is
-   * detected.
+   * detected. Instructions for implementations of this function can
+   * be found in section 8.3 of the software document.
    */
   public void run() {
     while (true) {

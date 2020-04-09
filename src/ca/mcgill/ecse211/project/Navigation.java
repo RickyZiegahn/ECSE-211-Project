@@ -156,7 +156,8 @@ public class Navigation {
   
   /**
    * Provides a pair of [dx, dy] that will go around an object. Add or subtracts headingChange
-   * from the current path if there is an object in the way of the desired path.
+   * from the current path if there is an object in the way of the desired path. Instructions
+   * for implementation of this function can be found in section 8.1 of the software doc.
    * 
    * @param x x coordinate of final destination
    * @param y y coordinate of final destiation
